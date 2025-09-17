@@ -40,18 +40,17 @@ public class ProductController {
 			return "Failed to delete product";
 		}
 	}
-	@PutMapping {"/product/edit/{id}"}
-    public Product editProduct{@PathVariable String id, @RequestBody Product newproduct) {
-    	Product findproduct =productRepo.findById(id).get();
-    	findproduct.setName(newproduct.getName());
-    	findproduct.setName(newproduct.getDescription());
-    	findproduct.setName(newproduct.getCategory());
-    	findproduct.setName(newproduct.getTags());
-    	findproduct.setName(newproduct.getPrice());
-    	findproduct.setName(newproduct.getStock());
-    	return productRepo.save(findproduct);
-    	
-    }
+	@PutMapping("/product/edit/{id}")
+	public Product editProduct(@PathVariable String id, @RequestBody Product newproduct) {
+		Product findproduct = productRepo.findById(id).get();
+		findproduct.setName(newproduct.getName());
+		findproduct.setDescription(newproduct.getDescription());
+		findproduct.setCategory(newproduct.getCategory());
+		findproduct.setTags(newproduct.getTags());
+		findproduct.setPrice(newproduct.getPrice());
+		findproduct.setStock(newproduct.getStock());
+		return productRepo.save(findproduct);
+	}
 }
 
-}
+
